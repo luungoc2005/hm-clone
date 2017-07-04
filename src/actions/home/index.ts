@@ -1,23 +1,23 @@
-import * as constants from './constants'
-import * as HNTypes from '../../middlewares/hnAPI/types'
+import { FilterTypes } from './constants';
+import * as actionTypes from './actionTypes';
+import * as HNTypes from '../../middlewares/hnAPI/types';
+import { BaseAction } from 'redux-actions';
 
-export interface SelectFilter {
-    type: constants.SELECT_FILTER,
+export interface SelectFilter extends BaseAction {
+    type: actionTypes.SELECT_FILTER,
     filter: FilterTypes,
 }
-
-export type FilterTypes = constants.FILTER_BEST | constants.FILTER_NEW | constants.FILTER_TOP;
 
 export function selectFilter(filter: FilterTypes) : SelectFilter
 {
     return {
-        type: constants.SELECT_FILTER,
+        type: actionTypes.SELECT_FILTER,
         filter
     }
 }
 
-export interface FetchItem {
-    type: constants.FETCH_ITEM | constants.FETCH_ITEM_SUCCESS | constants.FETCH_ITEM_FAILURE,
+export interface FetchItem extends BaseAction {
+    type: actionTypes.FETCH_ITEM | actionTypes.FETCH_ITEM_SUCCESS | actionTypes.FETCH_ITEM_FAILURE,
     isFetching: boolean,
     id: number,
     payload: HNTypes.HNItem,
@@ -26,7 +26,7 @@ export interface FetchItem {
 
 export function fetchItem(id: number): FetchItem {
     return {
-        type: constants.FETCH_ITEM,
+        type: actionTypes.FETCH_ITEM,
         isFetching: true,
         id,
         payload: null,
@@ -36,7 +36,7 @@ export function fetchItem(id: number): FetchItem {
 
 export function fetchItemSuccess(id: number, payload: HNTypes.HNItem): FetchItem {
     return {
-        type: constants.FETCH_ITEM_SUCCESS,
+        type: actionTypes.FETCH_ITEM_SUCCESS,
         isFetching: false,
         id,
         payload,
@@ -46,7 +46,7 @@ export function fetchItemSuccess(id: number, payload: HNTypes.HNItem): FetchItem
 
 export function fetchItemFailure(id: number, error: string): FetchItem {
     return {
-        type: constants.FETCH_ITEM_FAILURE,
+        type: actionTypes.FETCH_ITEM_FAILURE,
         isFetching: false,
         id,
         payload: null,
@@ -55,13 +55,13 @@ export function fetchItemFailure(id: number, error: string): FetchItem {
 }
 
 export interface FetchChildren {
-    type: constants.FETCH_CHILDREN,
+    type: actionTypes.FETCH_CHILDREN,
     parentId: number
 }
 
 export function fetchChildren(parentId: number): FetchChildren {
     return {
-        type: constants.FETCH_CHILDREN,
+        type: actionTypes.FETCH_CHILDREN,
         parentId
     }
 }

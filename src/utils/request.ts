@@ -12,7 +12,7 @@ import 'isomorphic-fetch';
  *
  * @return {object}          The parsed JSON from the request
  */
-function parseJSON(response: object): object {
+function parseJSON(response: Response): object {
   return response.json();
 }
 
@@ -23,13 +23,12 @@ function parseJSON(response: object): object {
  *
  * @return {object|undefined} Returns either the response, or throws an error
  */
-function checkStatus(response: object): object | undefined {
+function checkStatus(response: Response): object | undefined {
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
 
   const error = new Error(response.statusText);
-  error.response = response;
   throw error;
 }
 
