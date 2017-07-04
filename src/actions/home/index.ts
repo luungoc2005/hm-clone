@@ -65,3 +65,5 @@ export function fetchChildren(parentId: number): FetchChildren {
         parentId
     }
 }
+
+export type HomeActions = SelectFilter | FetchItem | FetchChildren;

@@ -1,26 +1,27 @@
-import { fromJS } from 'immutable';
-
-import { FilterTypes, FILTER_BEST } from '../../actions/home/constants';
+import { FILTER_BEST } from '../../actions/home/constants';
+import { HomeActions } from '../../actions/home';
+import { HomeReducer } from './types';
 import * as actionTypes from '../../actions/home/actionTypes';
-import { HNItem } from '../../middlewares/hnAPI/types';
-import { BaseAction } from 'redux-actions';
 
-export interface HomeReducer {
-    filter: FilterTypes,
-    items: HNItem[],
-}
-
-const initialState: HomeReducer = fromJS({
+const initialState: HomeReducer = {
     filter: FILTER_BEST,
+    list: [],
     items: [],
-});
+};
 
 export function homeReducer(
         state: HomeReducer = initialState, 
-        action: BaseAction): HomeReducer {
+        action: HomeActions): HomeReducer {
     switch (action.type) {
         case actionTypes.SELECT_FILTER:
+            state = {...state, filter: action.filter};
+            break;
 
+        case actionTypes.FETCH_ITEM:
+            state = {...state}
+        
+        default:
+            break;
     }
 
     return state;

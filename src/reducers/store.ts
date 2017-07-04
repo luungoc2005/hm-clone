@@ -1,7 +1,6 @@
 import { createStore, combineReducers, compose, applyMiddleware, 
             Store, Reducer, Middleware, GenericStoreEnhancer } from 'redux';
 
-import { fromJS } from 'immutable';
 // Redux Middlewares
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware, { SagaMiddleware } from 'redux-saga';
@@ -9,12 +8,17 @@ import { History } from 'history';
 
 // Reducers
 import { homeReducer } from './home';
+import { HomeReducer } from './home/types';
 
 const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
 
-const rootReducer: Reducer<{}> = combineReducers({
-    homeReducer
-});
+interface RootReducer {
+    home: HomeReducer
+}
+
+const rootReducer: RootReducer = {
+    home: homeReducer,
+};
 
 export function configureStore(
         initialState: object = {}, 
@@ -36,8 +40,8 @@ export function configureStore(
         window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
     
     const store: Store<{}> = createStore(
-        rootReducer,
-        fromJS(initialState),
+        combineReducers<RootReducer>(rootReducer),
+        initialState,
         composeEnhancers(...enhancers)
     );
 
