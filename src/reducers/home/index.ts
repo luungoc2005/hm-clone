@@ -1,17 +1,17 @@
 import { FILTER_BEST } from '../../actions/home/constants';
 import { HomeActions } from '../../actions/home';
-import { HomeReducer } from './types';
+import { HomeState } from './types';
 import * as actionTypes from '../../actions/home/actionTypes';
 
-const initialState: HomeReducer = {
+const initialState: HomeState = {
     filter: FILTER_BEST,
     list: [],
     items: [],
 };
 
 export function homeReducer(
-        state: HomeReducer = initialState, 
-        action: HomeActions): HomeReducer {
+        state: HomeState = initialState, 
+        action: HomeActions): HomeState {
     switch (action.type) {
         case actionTypes.SELECT_FILTER:
             state = {...state, filter: action.filter};

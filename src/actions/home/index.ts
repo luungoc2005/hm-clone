@@ -20,7 +20,7 @@ export interface FetchItem extends BaseAction {
     type: actionTypes.FETCH_ITEM | actionTypes.FETCH_ITEM_SUCCESS | actionTypes.FETCH_ITEM_FAILURE,
     isFetching: boolean,
     id: number,
-    payload: HNTypes.HNItem,
+    payload: HNTypes.HNItem | null,
     error: string | null
 }
 

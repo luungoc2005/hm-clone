@@ -67,4 +67,4 @@ export interface IPollItem {
     type: string;
 }
 
-export type HNItem = IStory | IAsk | IComment | IJob | IPoll | IPollItem | null;
+export type HNItem = IStory | IAsk | IComment | IJob | IPoll | IPollItem;

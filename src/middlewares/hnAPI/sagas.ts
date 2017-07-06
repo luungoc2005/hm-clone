@@ -4,10 +4,12 @@ import { Effect } from 'redux-saga';
 import { getItem } from './index';
 
 import { fetchItemSuccess, fetchItemFailure, FetchItem, FetchChildren } from '../../actions/home'
-import { FETCH_ITEM, FETCH_CHILDREN } from '../../actions/home/constants'
+import { FETCH_ITEM, FETCH_CHILDREN } from '../../actions/home/actionTypes'
 import * as types from './types';
 
 import { LOCATION_CHANGE } from 'react-router-redux';
+
+import { getStoreItem } from '../../reducers/home/selectors'
 
 export function* loadItem(action: FetchItem): IterableIterator<Effect> {
     try {
@@ -20,7 +22,15 @@ export function* loadItem(action: FetchItem): IterableIterator<Effect> {
 }
 
 export function* loadChildren(action: FetchChildren): IterableIterator<Effect> {
-    
+    try {
+        const children: types.HNItem[] = yield getStoreItem(action.parentId)
+        children.forEach(element => {
+            
+        });
+    }
+    catch (err) {
+
+    }
 }
 
 export function* watchForFetchItem(): IterableIterator<Effect> {

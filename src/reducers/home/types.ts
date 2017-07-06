@@ -1,7 +1,7 @@
 import { HNItem } from '../../middlewares/hnAPI/types';
 import { FilterTypes } from '../../actions/home/constants';
 
-export interface HomeReducer {
+export interface HomeState {
     filter: FilterTypes,
     list: number[],
     items: HNItem[],
