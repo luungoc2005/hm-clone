@@ -5,10 +5,12 @@ import { HomeState } from '../home/types';
 import { HNItem } from '../../middlewares/hnAPI/types';
 
 const selectHome: HomeState = (state: RootState) => state.home;
+const selectId: number = (state: RootState) => state.home.selectedId;
 
-export function getStoreItem(itemId: number): HNItem | undefined {
+export function getStoreItem(): HNItem | undefined {
     return createSelector(
+        selectId,
         selectHome,
-        (homeState: HomeState) => homeState.items.find(item => item !== null && item.id == itemId),
+        (itemId: number, homeState: HomeState) => homeState.items.find(item => item !== null && item.id == itemId),
     )
 }
