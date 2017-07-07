@@ -1,6 +1,9 @@
 export const SELECT_FILTER = 'HOME/SELECT_FILTER';
 export type SELECT_FILTER = typeof SELECT_FILTER;
 
+export const SELECT_POST = 'HOME/SELECT_POST';
+export type SELECT_POST = typeof SELECT_POST;
+
 // Fetch Items
 export const FETCH_ITEM = 'API/FETCH_ITEM';
 export type FETCH_ITEM = typeof FETCH_ITEM;

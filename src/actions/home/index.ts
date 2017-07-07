@@ -8,11 +8,24 @@ export interface SelectFilter extends BaseAction {
     filter: FilterTypes,
 }
 
+export interface SelectPost extends BaseAction {
+    type: actionTypes.SELECT_POST,
+    selectedId: number,
+}
+
 export function selectFilter(filter: FilterTypes) : SelectFilter
 {
     return {
         type: actionTypes.SELECT_FILTER,
         filter
+    }
+}
+
+export function selectPost(selectedId: number) : SelectPost
+{
+    return {
+        type: actionTypes.SELECT_POST,
+        selectedId
     }
 }
 
@@ -66,4 +79,4 @@ export function fetchChildren(parentId: number): FetchChildren {
     }
 }
 
-export type HomeActions = SelectFilter | FetchItem | FetchChildren;
+export type HomeActions = SelectFilter | SelectPost | FetchItem | FetchChildren;

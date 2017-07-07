@@ -21,6 +21,7 @@ const rootReducer = combineReducers({
 const defaultState: RootState = {
     home: {
         filter: FILTER_BEST,
+        selectedId: -1,
         list: [],
         items: [],
     }
