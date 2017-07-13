@@ -1,0 +1,9 @@
+GET https://hacker-news.firebaseio.com/v0/topstories.json
+
+###
+
+GET https://hacker-news.firebaseio.com/v0/newstories.json
+
+###
+
+GET https://hacker-news.firebaseio.com/v0/topstories.json

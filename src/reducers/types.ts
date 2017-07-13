@@ -1,5 +1,5 @@
-import { HomeState } from './home/types'
+import { HomeState } from './home/types';
 
 export interface RootState {
-    home: HomeState
+    home: HomeState;
 }

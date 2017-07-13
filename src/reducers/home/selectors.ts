@@ -11,6 +11,6 @@ export function getStoreItem(): HNItem | undefined {
     return createSelector(
         selectId,
         selectHome,
-        (itemId: number, homeState: HomeState) => homeState.items.find(item => item !== null && item.id == itemId),
-    )
+        (itemId: number, homeState: HomeState) => homeState.items.find(item => item !== null && item.id === itemId),
+    );
 }

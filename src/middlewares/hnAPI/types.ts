@@ -1,4 +1,4 @@
-export interface IStory extends IBaseItem {
+export interface Story extends BaseItem {
     by?: string;
     descendants?: number;
     id: number;
@@ -10,7 +10,7 @@ export interface IStory extends IBaseItem {
     url?: string;
 }
 
-export interface IComment extends IBaseItem {
+export interface Comment extends BaseItem {
     by?: string;
     id: number;
     kids?: number[];
@@ -20,7 +20,7 @@ export interface IComment extends IBaseItem {
     type?: string;
 }
 
-export interface IAsk extends IBaseItem {
+export interface Ask extends BaseItem {
     by?: string;
     descendants?: number;
     id: number;
@@ -33,7 +33,7 @@ export interface IAsk extends IBaseItem {
     url?: string;
 }
 
-export interface IJob extends IBaseItem {
+export interface Job extends BaseItem {
     by?: string;
     id: number;
     score?: number;
@@ -44,7 +44,7 @@ export interface IJob extends IBaseItem {
     url?: string;
 }
 
-export interface IPoll extends IBaseItem {
+export interface Poll extends BaseItem {
     by?: string;
     descendants?: number;
     id: number;
@@ -57,7 +57,7 @@ export interface IPoll extends IBaseItem {
     type?: string;
 }
 
-export interface IPollItem extends IBaseItem {
+export interface PollItem extends BaseItem {
     by?: string;
     id: number;
     poll?: number;
@@ -67,9 +67,9 @@ export interface IPollItem extends IBaseItem {
     type?: string;
 }
 
-export interface IBaseItem {
-    isFetching: boolean,
-    error?: string,
+export interface BaseItem {
+    isFetching: boolean;
+    error?: string;
 }
 
-export type HNItem = IStory | IAsk | IComment | IJob | IPoll | IPollItem;
+export type HNItem = Story | Ask | Comment | Job | Poll | PollItem;

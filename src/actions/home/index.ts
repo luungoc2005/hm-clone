@@ -4,37 +4,35 @@ import * as HNTypes from '../../middlewares/hnAPI/types';
 import { BaseAction } from 'redux-actions';
 
 export interface SelectFilter extends BaseAction {
-    type: actionTypes.SELECT_FILTER,
-    filter: FilterTypes,
+    type: actionTypes.SELECT_FILTER;
+    filter: FilterTypes;
 }
 
 export interface SelectPost extends BaseAction {
-    type: actionTypes.SELECT_POST,
-    selectedId: number,
+    type: actionTypes.SELECT_POST;
+    selectedId: number;
 }
 
-export function selectFilter(filter: FilterTypes) : SelectFilter
-{
+export function selectFilter(filter: FilterTypes): SelectFilter {
     return {
         type: actionTypes.SELECT_FILTER,
         filter
-    }
+    };
 }
 
-export function selectPost(selectedId: number) : SelectPost
-{
+export function selectPost(selectedId: number): SelectPost {
     return {
         type: actionTypes.SELECT_POST,
         selectedId
-    }
+    };
 }
 
 export interface FetchItem extends BaseAction {
-    type: actionTypes.FETCH_ITEM | actionTypes.FETCH_ITEM_SUCCESS | actionTypes.FETCH_ITEM_FAILURE,
-    isFetching: boolean,
-    id: number,
-    payload: HNTypes.HNItem | null,
-    error: string | null
+    type: actionTypes.FETCH_ITEM | actionTypes.FETCH_ITEM_SUCCESS | actionTypes.FETCH_ITEM_FAILURE;
+    isFetching: boolean;
+    id: number;
+    payload: HNTypes.HNItem | null;
+    error: string | null;
 }
 
 export function fetchItem(id: number): FetchItem {
@@ -44,7 +42,7 @@ export function fetchItem(id: number): FetchItem {
         id,
         payload: null,
         error: null
-    }
+    };
 }
 
 export function fetchItemSuccess(id: number, payload: HNTypes.HNItem): FetchItem {
@@ -54,7 +52,7 @@ export function fetchItemSuccess(id: number, payload: HNTypes.HNItem): FetchItem
         id,
         payload,
         error: null
-    }
+    };
 }
 
 export function fetchItemFailure(id: number, error: string): FetchItem {
@@ -64,19 +62,19 @@ export function fetchItemFailure(id: number, error: string): FetchItem {
         id,
         payload: null,
         error
-    }
+    };
 }
 
 export interface FetchChildren {
-    type: actionTypes.FETCH_CHILDREN,
-    parentId: number
+    type: actionTypes.FETCH_CHILDREN;
+    parentId: number;
 }
 
 export function fetchChildren(parentId: number): FetchChildren {
     return {
         type: actionTypes.FETCH_CHILDREN,
         parentId
-    }
+    };
 }
 
 export type HomeActions = SelectFilter | SelectPost | FetchItem | FetchChildren;
