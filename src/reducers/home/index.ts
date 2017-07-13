@@ -20,16 +20,19 @@ export function homeReducer(
             break;
 
         case actionTypes.SELECT_POST:
-            state = {...state, selectedItem: action.selectedId};
+            state = {...state, selectedId: action.selectedId};
+            break;
 
         case actionTypes.FETCH_ITEM:
             state = {...state};
+            break;
 
         case actionTypes.FETCH_ITEM_SUCCESS:
             state = updateItem(state, action.id, action.isFetching, {
                 error: action.error,
                 ...action.payload,
             });
+            break;
         
         default:
             break;
@@ -42,20 +45,19 @@ function updateItem (
         state: HomeState, 
         itemId: number,
         isFetching: boolean,
-        ...data: any[]): HomeState {
-    const itemIndex = state.items.findIndex(item => item.id == itemId);
+        ...data: {}[]): HomeState {
+    const itemIndex = state.items.findIndex(item => item.id === itemId);
 
     const newItem: HNItem = {
         id: itemId,
         isFetching,
         ...data
-    }
+    };
 
     if (itemIndex === -1) {
         state.items = [...state.items, newItem];
-    }
-    else {
-        state.items = state.items.map((oldItem, index) => index === itemIndex? newItem: oldItem);
+    } else {
+        state.items = state.items.map((oldItem, index) => index === itemIndex ? newItem : oldItem);
     }
 
     return state;
