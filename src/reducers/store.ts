@@ -10,7 +10,7 @@ import { RootState } from './types';
 // Reducers
 import { homeReducer } from './home';
 
-import { FILTER_BEST } from '../actions/home/constants'
+import { FILTER_BEST } from '../actions/home/constants';
 
 const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
 
@@ -25,7 +25,7 @@ const defaultState: RootState = {
         list: [],
         items: [],
     }
-}
+};
 
 export function configureStore(
         initialState: RootState = defaultState, 
