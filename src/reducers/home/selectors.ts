@@ -2,15 +2,25 @@ import { createSelector } from 'reselect';
 
 import { RootState } from '../types';
 import { HomeState } from '../home/types';
-import { HNItem } from '../../middlewares/hnAPI/types';
+// import { HNItem } from '../../middlewares/hnAPI/types';
 
-const selectHome: HomeState = (state: RootState) => state.home;
-const selectId: number = (state: RootState) => state.home.selectedId;
+const selectHome = (state: RootState) => state.home;
+const makeSelectId = () => createSelector(
+    selectHome,
+    (homeState: HomeState) => homeState.selectedId
+);
 
-export function getStoreItem(): HNItem | undefined {
-    return createSelector(
-        selectId,
+const makeSelectStoreItem = () => createSelector(
+        makeSelectId(),
         selectHome,
-        (itemId: number, homeState: HomeState) => homeState.items.find(item => item !== null && item.id === itemId),
+        (itemId, homeState) => 
+            homeState
+            .items
+            .find(item => item !== null && item.id === itemId)
     );
-}
+
+export {
+    selectHome,
+    makeSelectId,
+    makeSelectStoreItem
+};

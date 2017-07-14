@@ -2,7 +2,7 @@ export interface Story extends BaseItem {
     by?: string;
     descendants?: number;
     id: number;
-    kids?: number[];
+    kids: number[];
     score?: number;
     time?: number;
     title?: string;
@@ -13,7 +13,7 @@ export interface Story extends BaseItem {
 export interface Comment extends BaseItem {
     by?: string;
     id: number;
-    kids?: number[];
+    kids: number[];
     parent?: number;
     text?: string;
     time?: number;
@@ -24,7 +24,7 @@ export interface Ask extends BaseItem {
     by?: string;
     descendants?: number;
     id: number;
-    kids?: number[];
+    kids: number[];
     score?: number;
     text?: string;
     time?: number;
@@ -48,7 +48,7 @@ export interface Poll extends BaseItem {
     by?: string;
     descendants?: number;
     id: number;
-    kids?: number[];
+    kids: number[];
     parts?: number[];
     score?: number;
     text?: string;
@@ -70,6 +70,7 @@ export interface PollItem extends BaseItem {
 export interface BaseItem {
     isFetching: boolean;
     error?: string;
+    kids?: number[];
 }
 
 export type HNItem = Story | Ask | Comment | Job | Poll | PollItem;
